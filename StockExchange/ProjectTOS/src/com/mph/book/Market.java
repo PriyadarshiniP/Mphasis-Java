@@ -8,10 +8,12 @@ import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+
+//@Market Class to trade the order (Order Matching)
 public class Market {
 
 
-    private static final Logger LOGGER = Logger.getLogger("market");
+    private static final Logger LOGGER = Logger.getLogger(Market.class.getName());
 
     private List<Order> orderList = new ArrayList<Order>();
 

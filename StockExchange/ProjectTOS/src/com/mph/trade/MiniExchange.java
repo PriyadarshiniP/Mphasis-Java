@@ -6,8 +6,12 @@ import com.mph.book.*;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
 
+//@MiniExchange class used for Trader registration and to place order
 public class MiniExchange implements Exchange {
+
+    private static final Logger logger = Logger.getLogger(MiniExchange.class.getName());
 
     private Map<String, Trader> trader = new HashMap<>();
     public static Map<String, Order> orderMap = new HashMap<>();
@@ -23,7 +27,7 @@ public class MiniExchange implements Exchange {
 
         orderMap.put("11", new Order("97899T", "11", 12, 2, 4, BuySell.SELL));
         orderMap.put("12", new Order("9678T", "12", 3, 3, 3, BuySell.BUY));
-        orderMap.put("13", new Order("96574T", "13", 3, 4, 3, BuySell.SELL));
+        orderMap.put("13", new Order("96574T", "13", 3, 3, 3, BuySell.SELL));
         market = new Market();
     }
 
@@ -39,7 +43,7 @@ public class MiniExchange implements Exchange {
         traderid = 1 + Integer.valueOf(traders.getContactno());
         traders.setTraderid(traderid + "2");
         trader.put(traderid + "2", traders);
-        System.out.println(traderid + "2");
+        logger.info(traderid + "2");
         return traderid + "2";
     }
 
@@ -105,13 +109,13 @@ public class MiniExchange implements Exchange {
             orderId = 1 + Integer.parseInt(order.getTraderId());
             order.setOrderId(orderId + "O");
             orderMap.put(orderId + "O", order);
-            System.out.println("Order Id: " + orderId + "O");
-            System.out.println("Event");
+            logger.info("Order Id: " + orderId + "O");
+            logger.info("Event");
             Event event = new Event();
             event.setRequestType(OrderRequestType.NEW);
-            System.out.println("Thread started");
+            logger.info("Thread started");
             int coreCount = Runtime.getRuntime().availableProcessors();
-            System.out.println(coreCount);
+            logger.info(coreCount + "");
             executor = Executors.newFixedThreadPool(coreCount);
 
             Runnable worker = new XchangeWorker(event);
@@ -119,7 +123,7 @@ public class MiniExchange implements Exchange {
 
 
             executor.shutdown();
-            System.out.println("Finished all threads");
+            logger.info("Finished all threads");
         }
 
     }
@@ -136,13 +140,12 @@ public class MiniExchange implements Exchange {
         orderMap.remove(orderId);
         System.out.println("order list after trade" + orderMap);
 
-
     }
 
     //retrieves order based on stock id
     @Override
     public void viewBook(long stockid) {
-        System.out.println(orderMap.get(stockid));
+        logger.info("" + orderMap.get(stockid));
     }
 
 }

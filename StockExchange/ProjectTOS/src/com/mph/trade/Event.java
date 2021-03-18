@@ -1,6 +1,7 @@
 package com.mph.trade;
 
 
+//@Event class to get the Order details ( NEW , CANCEL)
 public class Event {
 
     private Order order;

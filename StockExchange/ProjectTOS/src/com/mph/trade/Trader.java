@@ -2,6 +2,7 @@ package com.mph.trade;
 
 import java.io.Serializable;
 
+//Trader Pojo class
 public class Trader implements Serializable {
 
     private String tradename;
