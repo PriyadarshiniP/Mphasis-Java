@@ -9,11 +9,11 @@ import java.util.concurrent.Executors;
 
 public class MiniExchange implements Exchange {
 
-    Map<String, Trader> trader = new HashMap<>();
-    static Map<String, Order> orderMap = new HashMap<>();
-    long traderid = 100;
-    long orderId = 100;
-    Market market;
+    private Map<String, Trader> trader = new HashMap<>();
+    public static Map<String, Order> orderMap = new HashMap<>();
+    private long traderid = 100;
+    private long orderId = 100;
+    private Market market;
     ExecutorService executor = null;
 
     public MiniExchange() {
@@ -27,11 +27,13 @@ public class MiniExchange implements Exchange {
         market = new Market();
     }
 
+    //validates the trader before order is placed
     public String validate(Order order) throws InvalidTraderException {
         String value = getValidTrader(order.getTraderId());
         return value;
     }
 
+    //performs new trader registration
     @Override
     public String registerTrader(Trader traders) {
         traderid = 1 + Integer.valueOf(traders.getContactno());
@@ -41,6 +43,7 @@ public class MiniExchange implements Exchange {
         return traderid + "2";
     }
 
+    //updates the trader details
     public Trader updateTrader(Trader traders) {
         if (traders.getTraderid() == null) {
             return null;
@@ -49,18 +52,20 @@ public class MiniExchange implements Exchange {
         return traders;
     }
 
+    //deletes the trader based on trader ID
     public Trader deleteTrade(String traderid) {
 
         return trader.remove(traderid);
 
     }
 
+    //Retrieves all the traders
     public List<Trader> getAllTraders() {
 
         return new ArrayList<Trader>(trader.values());
     }
 
-
+    //validates the trader based on the trader ID. If not a valid trader, it throws the custom exception
     public String getValidTrader(String Traderid) throws InvalidTraderException {
         String msg = "";
         if (trader.get(Traderid) == null) {
@@ -81,16 +86,12 @@ public class MiniExchange implements Exchange {
         return msg;
     }
 
+    //Retrieves the trader based on trader ID
     public Trader getTrader(String Traderid) {
         return trader.get(Traderid);
     }
 
-
-    @Override
-    public void registerMarketListener(MarketListener listner) {
-
-    }
-
+    //places the new order and executes the task in run method of XchangeWorker Class
     @Override
     public void placeOrder(Order order) {
         String validTrader = " ";
@@ -123,19 +124,13 @@ public class MiniExchange implements Exchange {
 
     }
 
-
+    //retrieves all the orders
     public static List<Order> getAllOrders() {
 
         return new ArrayList<Order>(orderMap.values());
     }
 
-
-    //TODO
-    @Override
-    public void deleteOrder(Order order) {
-
-    }
-
+    //deletes the order based on order ID
     public static void deleteOrder(String orderId) {
 
         orderMap.remove(orderId);
@@ -144,13 +139,7 @@ public class MiniExchange implements Exchange {
 
     }
 
-
-    //TODO
-    @Override
-    public void modifyOrder(Order order) {
-
-    }
-
+    //retrieves order based on stock id
     @Override
     public void viewBook(long stockid) {
         System.out.println(orderMap.get(stockid));

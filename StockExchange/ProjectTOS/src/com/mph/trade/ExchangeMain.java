@@ -18,8 +18,6 @@ public class ExchangeMain {
         System.out.println(result2);
         System.out.println(ex.getAllTraders());
         System.out.println(ex.updateTrader(new Trader("priya", "8765", "addr2", "97898")));
-
-
         ex.placeOrder(new Order("3472", "14", 13, 4, 2, BuySell.SELL));
 
 

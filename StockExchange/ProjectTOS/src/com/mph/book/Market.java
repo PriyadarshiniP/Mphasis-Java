@@ -12,9 +12,6 @@ public class Market {
 
 
     private static final Logger LOGGER = Logger.getLogger("market");
-    private OrderBook books;
-    private BookOrder orders;
-    private MarketListener listener;
 
     private List<Order> orderList = new ArrayList<Order>();
 
@@ -23,52 +20,7 @@ public class Market {
 
     }
 
-    //TODO
-    public void registerListener(MarketListener listener) {
-
-    }
-
-    //TODO
-    public OrderBook open(long securityId) {
-        return null;
-    }
-
-    //TODO
-    public BookOrder find(long orderId) {
-        return null;
-    }
-
-    //TODO
-    public void add(long instrument, long orderId, BuySell side, long price, long size) {
-
-
-    }
-
-    //TODO
-    public void doMatching(OrderBook book, boolean bbo, long orderId, long size, long price) {
-
-    }
-
-    //TODO
-    public void modify(long orderId, long size) {
-
-    }
-
-    //TODO
-    public long execute(long orderId, long quantity) {
-        return 1L;
-    }
-
-    //TODO
-    public long execute(long orderId, long quantity, long price) {
-        return 1l;
-    }
-
-    //TODO
-    public void execute(long orderId, BookOrder order, long quantity, long price) {
-
-    }
-
+    //performs buy and sell order matching for particular stock ID
     public synchronized void execute() {
 
         this.orderList = MiniExchange.getAllOrders();
@@ -79,7 +31,6 @@ public class Market {
                 .stream().filter(o -> o.getSide().equals(BuySell.SELL))
                 .forEach(
                         product -> {
-
 
                             LOGGER.info("trading stock " + product.stockId); //123
                             List<Order> buyOrderForStock = getBuyOrdersForStock(product.getStockId());
@@ -121,7 +72,7 @@ public class Market {
 
     }
 
-
+    //Retrieves the buy orders for a particular stock ID
     public List<Order> getBuyOrdersForStock(long stockId) {
 
         return this.orderList.stream().filter(e -> {
@@ -132,18 +83,20 @@ public class Market {
     }
 
 
-    //TODO
     public long cancel(Event event) {
+        //TODO
         return 1l;
     }
 
 
-    //TODO
-    public void delete(long orderId) {
-
-    }
-
-    //TODO
     public void modify(Event event) {
+        //TODO
     }
+
+    //deletes the order based on specified order ID
+    public void delete(String orderId) {
+        MiniExchange.deleteOrder(orderId);
+    }
+
+
 }

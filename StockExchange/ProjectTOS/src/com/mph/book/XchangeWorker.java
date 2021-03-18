@@ -7,10 +7,10 @@ import com.mph.trade.OrderRequestType;
 import java.util.logging.Logger;
 
 public class XchangeWorker implements Runnable {
-    Logger logger = Logger.getLogger("Xchange Worker");
+
+    private Logger logger = Logger.getLogger("Xchange Worker");
     private Market market = new Market();
     private Event event;
-
 
     public XchangeWorker(Event event) {
         this.event = event;
@@ -46,6 +46,7 @@ public class XchangeWorker implements Runnable {
     }
 
 
+    //performs operations based on the ordertype
     @Override
     public void run() {
         if (event.getRequestType() == OrderRequestType.NEW) {
