@@ -14,8 +14,8 @@ public class MapExample {
         map.put(1,"third"); // the value gets updated as 'third' for the key 1
         map.put(4,"four");
 
-        // System.out.println(map);
-        //System.out.println(map.get(2));
+        System.out.println(map);
+        System.out.println(map.get(2));
         Set<Integer> keys =map.keySet();
 
         Iterator<Integer> iterator = keys.iterator();
