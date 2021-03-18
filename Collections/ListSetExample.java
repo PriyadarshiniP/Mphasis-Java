@@ -10,11 +10,11 @@ class Tasks{
     public Collection<String > getResult(){
 
         //prints it in the insertion order
-//        ArrayList<String> result = new ArrayList<String>();
-//        result.add("A");
-//        result.add("E");
-//        result.add("F");
-//        result.add("D");
+           ArrayList<String> result = new ArrayList<String>();
+//           result.add("A");
+//           result.add("E");
+//           result.add("F");
+//           result.add("D");
 
           //set doesn't guarantee the insertion order
           //set doesn't store duplicate values
@@ -23,7 +23,7 @@ class Tasks{
           result.add("B");
           result.add("C");
           result.add("D");
-        return result;
+          return result;
     }
 
 }
