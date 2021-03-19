@@ -5,10 +5,11 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-class PointClass{
-    int x,y;
+//cyclic barrier implementation
+class PointC {
+    int x, y;
 
-    public PointClass(int x, int y) {
+    public PointC(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -22,16 +23,16 @@ class PointClass{
     }
 }
 
-class TaskClass implements Runnable{
+class TaskC implements Runnable {
 
     CyclicBarrier barrier;
 
-    public TaskClass(CyclicBarrier barrier) {
+    public TaskC(CyclicBarrier barrier) {
         this.barrier = barrier;
     }
 
     @Override
-    public void run()  {
+    public void run() {
         System.out.println(Thread.currentThread());
         try {
             Thread.sleep(3000);
@@ -50,6 +51,7 @@ class TaskClass implements Runnable{
 
     }
 }
+
 public class BarrierExample {
     public static void main(String[] args) throws InterruptedException {
 
@@ -57,9 +59,9 @@ public class BarrierExample {
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
         CyclicBarrier barrier = new CyclicBarrier(3);
 
-        service.submit(new TaskClass(barrier));
-        service.submit(new TaskClass(barrier));
-        service.submit(new TaskClass(barrier));
+        service.submit(new TaskC(barrier));
+        service.submit(new TaskC(barrier));
+        service.submit(new TaskC(barrier));
 
         System.out.println("initiating shutdown");
         service.shutdown();

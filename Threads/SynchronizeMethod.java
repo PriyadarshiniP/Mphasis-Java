@@ -1,8 +1,7 @@
 package com.mph;
 
-
-class Data1
-{
+//usage of synchronize method
+class DataClass {
     private int value;
 
     public synchronized void getValue() {
@@ -17,7 +16,7 @@ class Data1
 
     }
 
-    public  synchronized void setValue(int value) {
+    public synchronized void setValue(int value) {
         this.value = value;
         try {
             notify();
@@ -29,40 +28,39 @@ class Data1
     }
 }
 
-class Runs1 implements Runnable{
-    Data1 data;
-    Runs1(){
-        data = new Data1();
+class RunTaskClass implements Runnable {
+    DataClass data;
+
+    RunTaskClass() {
+        data = new DataClass();
     }
 
     @Override
     public void run() {
         Thread currThread = Thread.currentThread();
 
-        for(int counter =0;counter<10;counter++){
+        for (int counter = 0; counter < 10; counter++) {
             System.out.println(currThread);
-            if(currThread.getName().equalsIgnoreCase("Producer")){
+            if (currThread.getName().equalsIgnoreCase("Producer")) {
 
-                    data.setValue(counter + 1);
+                data.setValue(counter + 1);
 
-                }
+            } else {
 
-            else {
+                data.getValue();
 
-                    data.getValue();
-
-                }
             }
         }
-
     }
 
-public class SynchronizeMethod{
-    public static void main(String[]args){
+}
+
+public class SynchronizeMethod {
+    public static void main(String[] args) {
         Thread mainthread = Thread.currentThread();
-        Runs r = new Runs();
-        Thread t1 = new Thread(r,"Producer");
-        Thread t2 = new Thread(r,"Consumer");
+        RunTaskClass r = new RunTaskClass();
+        Thread t1 = new Thread(r, "Producer");
+        Thread t2 = new Thread(r, "Consumer");
         t1.start();
         t2.start();
         System.out.println("end");

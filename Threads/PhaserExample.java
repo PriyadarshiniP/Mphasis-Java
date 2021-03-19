@@ -1,6 +1,7 @@
 package com.mph;
 import java.util.concurrent.*;
 
+//implemetation of phaser
 class PointClass{
     int x,y;
 

@@ -4,8 +4,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-class Point{
-    int x,y;
+//implementation of coundown latch
+class Point {
+    int x, y;
 
     public Point(int x, int y) {
         this.x = x;
@@ -21,7 +22,7 @@ class Point{
     }
 }
 
-class Task implements Runnable{
+class Task implements Runnable {
 
     CountDownLatch latch;
 
@@ -30,7 +31,7 @@ class Task implements Runnable{
     }
 
     @Override
-    public void run()  {
+    public void run() {
         System.out.println(Thread.currentThread());
         try {
             Thread.sleep(3000);
@@ -43,6 +44,7 @@ class Task implements Runnable{
 
     }
 }
+
 public class CountDownExample {
     public static void main(String[] args) throws InterruptedException {
 

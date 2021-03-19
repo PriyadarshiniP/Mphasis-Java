@@ -1,5 +1,6 @@
 package com.mph;
 
+//demo on the thread states
 class Runner implements Runnable{
     public void run(){
         for(int i=0;i<100;i++){
@@ -7,8 +8,6 @@ class Runner implements Runnable{
         }
 
     }
-
-
 }
 public class ThreadStatesDemo {
     public static void main(String []args) {

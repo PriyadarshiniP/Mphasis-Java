@@ -2,6 +2,7 @@ package com.mph;
 
 import java.util.concurrent.TimeUnit;
 
+//Implementation of synchronization block
 class Data
     {
         private int value;
@@ -15,10 +16,9 @@ class Data
         }
     }
 
-    class Runs implements Runnable{
+    class RunTask implements Runnable{
         Data data;
-        private volatile boolean exit = false;
-        Runs(){
+        RunTask(){
             data = new Data();
         }
         @Override
@@ -56,7 +56,7 @@ class Data
     public class SynchronizeBlock {
         public static void main(String[]args)  {
             Thread mainthread = Thread.currentThread();
-            Runs r = new Runs();
+            RunTask r = new RunTask();
             Thread t1 = new Thread(r,"Producer");
             Thread t2 = new Thread(r,"Consumer");
             t1.start();

@@ -1,5 +1,6 @@
-package com.company;
+package com.mph;
 
+//deadlock implementation
 public class SimpleDeadLock {
 
     public static final Object lock1 = new Object();
@@ -50,5 +51,4 @@ public class SimpleDeadLock {
         }
     }
 }
-
 

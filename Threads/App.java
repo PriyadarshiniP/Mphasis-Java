@@ -1,11 +1,11 @@
-package com.company;
+package com.mph;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-
-
+//@WorkerMethodsSynchronized usage of synchronized block
 class WorkerMethodsSynchronized {
 
     private Random random = new Random();
@@ -14,6 +14,7 @@ class WorkerMethodsSynchronized {
     private List<Integer> list2 = new ArrayList<>();
     private Object lock = new Object();
     private Object lock2 = new Object();
+
     /**
      * synchronized, methods use different data (list1 list2) so by synchronized
      * methods if one thread runs the stageOne other thread cannot run stageTwo
@@ -21,7 +22,7 @@ class WorkerMethodsSynchronized {
      * lock Object for two shared data.
      */
     public void stageOne() {
-        synchronized (lock){
+        synchronized (lock) {
             list1.add(random.nextInt(100));
             try {
                 Thread.sleep(2000);
@@ -42,16 +43,17 @@ class WorkerMethodsSynchronized {
             }
         }
     }
+
     public void process() {
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             stageOne();
             stageTwo();
 
         }
     }
 
-    public void main(){
+    public void main() {
         System.out.println("Starting ..." + Thread.currentThread());
         long start = System.currentTimeMillis();
         Thread t1 = new Thread(new Runnable() {
@@ -72,7 +74,8 @@ class WorkerMethodsSynchronized {
         try {
             t1.join();
             t2.join();
-        } catch (InterruptedException ignored) {}
+        } catch (InterruptedException ignored) {
+        }
 
         long end = System.currentTimeMillis();
 

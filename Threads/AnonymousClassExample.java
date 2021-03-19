@@ -1,9 +1,11 @@
 package com.mph;
+
 import java.util.LinkedList;
 import java.util.Random;
 
 
 //@SuppressWarnings("InfiniteLoopStatement")
+//using the synchronized block to add value and remove value from linkedlist
 class Processor2 {
 
     private LinkedList<Integer> list = new LinkedList<>();
@@ -44,7 +46,9 @@ class Processor2 {
         }
     }
 }
-public class Code3 {
+
+//create the threads by passing the instance of runnable to thread class
+public class AnonymousClassExample {
 
     public static void main(String[] args) throws InterruptedException {
         final Processor2 processor = new Processor2();
@@ -53,7 +57,8 @@ public class Code3 {
             public void run() {
                 try {
                     processor.produce();
-                } catch (InterruptedException ignored) {}
+                } catch (InterruptedException ignored) {
+                }
             }
         });
 
@@ -62,7 +67,8 @@ public class Code3 {
             public void run() {
                 try {
                     processor.consume();
-                } catch (InterruptedException ignored) {}
+                } catch (InterruptedException ignored) {
+                }
             }
         });
 

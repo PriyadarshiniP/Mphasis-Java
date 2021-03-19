@@ -1,11 +1,12 @@
-package com.company;
+package com.mph;
 
 import java.util.concurrent.*;
 
-class Point{
-    int x,y;
+//Usage of scheduled thread pool
+class Points {
+    int x, y;
 
-    public Point(int x, int y) {
+    public Points(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -19,20 +20,22 @@ class Point{
     }
 }
 
-class Task implements Callable<Point>{
+//Implementation of Callable interface with Future
+class Tasks implements Callable<Points> {
 
     @Override
-    public Point call() throws Exception {
-        return new Point(2,6);
+    public Points call() throws Exception {
+        return new Points(2, 6);
     }
 }
-public class CallableExample{
-    public static void main(String []args){
+
+public class CallableExample {
+    public static void main(String[] args) {
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newScheduledThreadPool(coreCount);
-        Future<Point> future = service.submit(new Task());
+        Future<Points> future = service.submit(new Tasks());
         try {
-            Point point = future.get();
+            Points point = future.get();
             System.out.println(point);
         } catch (InterruptedException e) {
             e.printStackTrace();

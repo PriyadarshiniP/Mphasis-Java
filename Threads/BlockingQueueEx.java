@@ -5,6 +5,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 @SuppressWarnings("InfiniteLoopStatement")
+//Usage of blocking queue
 public class BlockingQueueEx {
 
 
@@ -16,7 +17,8 @@ public class BlockingQueueEx {
             public void run() {
                 try {
                     producer();
-                } catch (InterruptedException ignored) {}
+                } catch (InterruptedException ignored) {
+                }
             }
         });
 
@@ -24,13 +26,13 @@ public class BlockingQueueEx {
             public void run() {
                 try {
                     consumer();
-                } catch (InterruptedException ignored) {}
+                } catch (InterruptedException ignored) {
+                }
             }
         });
         t1.start();
         t2.start();
-//        t1.join();
-//        t2.join();
+
 
         // Pause for 30 seconds and force quitting the app (because we're
         // looping infinitely)

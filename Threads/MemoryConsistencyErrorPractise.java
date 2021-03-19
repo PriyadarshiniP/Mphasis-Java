@@ -1,18 +1,19 @@
 package com.mph;
 
+
+//usage of volatile variable
 public class MemoryConsistencyErrorPractise {
     private static volatile boolean sayHello = false;
-    //private static boolean sayHello = false;
 
     public static void main(String[] args) throws InterruptedException {
 
         Thread thread = new Thread(() -> {
-            while(!sayHello) {
+            while (!sayHello) {
             }
 
             System.out.println("Hello World!");
 
-            while(sayHello) {
+            while (sayHello) {
             }
 
             System.out.println("Good Bye!");
