@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+//implements the serializable interface to serialize and deserialize the objects of ProductRecord class
 class ProductRecord implements Serializable {
     private int productCode;
     private String composition;
@@ -93,14 +94,11 @@ class ProductFileStream {
                 outStream.writeObject(p);
             }
 
-        }
-        catch (IOException ioException) {
+        } catch (IOException ioException) {
             System.err.println("Error opening file.");
-        }
-        catch (NoSuchElementException noSuchElementException) {
+        } catch (NoSuchElementException noSuchElementException) {
             System.err.println("Invalid input.");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
@@ -140,7 +138,8 @@ class ProductFileStream {
 
 }
 
-public class ProductFile{
+//adds the product objects to the arraylist
+public class ProductFile {
     public static void main(String[] args) {
         String filePath = "d://java//product.dat";
         List<ProductRecord> list = new ArrayList<>();
@@ -150,13 +149,14 @@ public class ProductFile{
 
         list.add(new ProductRecord(191, "Amlodipine", "Amdepin",
                 "ZydusCadila", 18, 6, 20.90f));
-        ProductFileStream pf=new ProductFileStream();
+        ProductFileStream pf = new ProductFileStream();
         pf.writeToFile(list, filePath);
-        List<ProductRecord> products=pf.readFromFile(filePath);
+        List<ProductRecord> products = pf.readFromFile(filePath);
         printlist(products);
 
     }
 
+    //prints the product details
     public static void printlist(List<ProductRecord> list) {
         System.out.printf("%-7s%-20s%-20s%-20s%-10s%-10s%-10s\n", "Code",
                 "Generic", "Name", "Company", "Stock", "Reorder", "Unit Price");

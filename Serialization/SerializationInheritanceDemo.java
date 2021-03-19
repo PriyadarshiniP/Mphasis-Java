@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+//Implements the serialization with inheritance
 public class SerializationInheritanceDemo {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -20,7 +21,7 @@ public class SerializationInheritanceDemo {
         System.out.println("DeSerialization Starts");
         FileInputStream fileInputStream = new FileInputStream("inheritance.txt");
         ObjectInputStream inputStream = new ObjectInputStream(fileInputStream);
-        Derived derived2 = (Derived)inputStream.readObject();
+        Derived derived2 = (Derived) inputStream.readObject();
 
         System.out.println(derived2.child);
         System.out.println(derived2.parent);

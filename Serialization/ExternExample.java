@@ -1,17 +1,18 @@
 package com.mph;
+
 import java.io.*;
+
+//usage of externalizable interface and its methods
 class Car implements Externalizable {
     static int age;
     String name;
     int year;
 
-    public Car()
-    {
+    public Car() {
         System.out.println("Default Constructor called");
     }
 
-    Car(String n, int y)
-    {
+    Car(String n, int y) {
         this.name = n;
         this.year = y;
         age = 10;
@@ -19,8 +20,7 @@ class Car implements Externalizable {
 
     @Override
     public void writeExternal(ObjectOutput out)
-            throws IOException
-    {
+            throws IOException {
         out.writeObject(name);
         out.writeInt(age);
         out.writeInt(year);
@@ -28,15 +28,14 @@ class Car implements Externalizable {
 
     @Override
     public void readExternal(ObjectInput in)
-            throws IOException, ClassNotFoundException
-    {
-        name = (String)in.readObject();
+            throws IOException, ClassNotFoundException {
+        name = (String) in.readObject();
         year = in.readInt();
         age = in.readInt();
     }
 
-    @Override public String toString()
-    {
+    @Override
+    public String toString() {
         return ("Name: " + name + "\n"
                 + "Year: " + year + "\n"
                 + "Age: " + age);
@@ -44,8 +43,7 @@ class Car implements Externalizable {
 }
 
 public class ExternExample {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Car car = new Car("BMW", 1995);
         Car newcar = null;
 
@@ -57,8 +55,7 @@ public class ExternExample {
                     = new ObjectOutputStream(fo);
             so.writeObject(car);
             so.flush();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -68,9 +65,8 @@ public class ExternExample {
                     = new FileInputStream("car.txt");
             ObjectInputStream si
                     = new ObjectInputStream(fi);
-            newcar = (Car)si.readObject();
-        }
-        catch (Exception e) {
+            newcar = (Car) si.readObject();
+        } catch (Exception e) {
             System.out.println(e);
         }
 

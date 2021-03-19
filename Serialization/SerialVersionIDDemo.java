@@ -2,14 +2,13 @@ package com.mph;
 
 import java.io.*;
 
-class Data implements Serializable{
-    private static final long serialVersionUID =11l;
-    int i=10;
-    int j=20;
+//The need for serial version UID
+class Data implements Serializable {
+    private static final long serialVersionUID = 11l;
+    int i = 10;
+    int j = 20;
     //int k=30;
 }
-
-
 
 
 public class SerialVersionIDDemo {
@@ -27,16 +26,14 @@ public class SerialVersionIDDemo {
             ObjectInputStream in = new ObjectInputStream(fin);
 
             // Method for deserialization of object
-            Data dataRestored = (Data)in.readObject();
+            Data dataRestored = (Data) in.readObject();
 
 
-            System.out.println("Deserialized Object value "+ dataRestored.i+" "+dataRestored.j);
+            System.out.println("Deserialized Object value " + dataRestored.i + " " + dataRestored.j);
+
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
 
         }
-
-        catch (IOException | ClassNotFoundException ex) {
-                  ex.printStackTrace();
-
     }
 }
-    }

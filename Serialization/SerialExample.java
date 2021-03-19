@@ -2,15 +2,15 @@ package com.mph;
 
 import java.io.*;
 
-class Emp implements Serializable {
+//serialization and Deserialization of Employee class objects using Serializable
+class Employee implements Serializable {
     transient int a;
     static int b;
     String name;
     int age;
 
 
-    public Emp(String name, int age, int a, int b)
-    {
+    public Employee(String name, int age, int a, int b) {
         this.name = name;
         this.age = age;
         this.a = a;
@@ -20,8 +20,7 @@ class Emp implements Serializable {
 }
 
 public class SerialExample {
-    public static void printdata(Emp object1)
-    {
+    public static void printdata(Employee object1) {
 
         System.out.println("name = " + object1.name);
         System.out.println("age = " + object1.age);
@@ -29,9 +28,8 @@ public class SerialExample {
         System.out.println("b = " + object1.b);
     }
 
-    public static void main(String[] args)
-    {
-        Emp object = new Emp("ab", 20, 2, 1000);
+    public static void main(String[] args) {
+        Employee object = new Employee("ab", 20, 2, 1000);
         String filename = "sample.txt";
 
         // Serialization
@@ -55,9 +53,7 @@ public class SerialExample {
 
             // value of static variable changed
             object.b = 2000;
-        }
-
-        catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println("IOException is caught");
         }
 
@@ -73,7 +69,7 @@ public class SerialExample {
                     (file);
 
             // Method for deserialization of object
-            object = (Emp)in.readObject();
+            object = (Employee) in.readObject();
 
             in.close();
             file.close();
@@ -82,13 +78,9 @@ public class SerialExample {
             printdata(object);
 
             // System.out.println("z = " + object1.z);
-        }
-
-        catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println("IOException is caught");
-        }
-
-        catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             System.out.println("ClassNotFoundException" +
                     " is caught");
         }

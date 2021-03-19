@@ -3,6 +3,7 @@ package com.mph;
 import java.io.*;
 import java.util.Random;
 
+//Implements the externalizable interface to serialize and deserialize the object of book class
 public class Book implements Externalizable {
     private int bookId;
     private String isbn;
