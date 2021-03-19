@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+//copying characters using FileReader and FileWriter
 public class CopyCharacters {
     public static void main(String[] args) throws IOException {
 
@@ -27,9 +28,5 @@ public class CopyCharacters {
             }
         }
     }
-
-    //file reader, writer -> reads the charcters and prints out , one byte at a time
-    //buffered reader -> deals with one line at a time
-    //with lines we have /n new line and /r carriage return
 
 }

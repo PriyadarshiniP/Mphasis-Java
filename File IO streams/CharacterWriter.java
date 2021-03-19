@@ -4,7 +4,8 @@ import java.io.CharArrayWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class code12Practise {
+//Usage of CharacterArrayWriter and its methods
+public class CharacterWriter {
     public static void main(String args[]) throws IOException {
         CharArrayWriter f = new CharArrayWriter();
         String s = "This should end up in the array";
@@ -17,7 +18,7 @@ public class code12Practise {
         System.out.println("Into array");
 
         char c[] = f.toCharArray();
-        for (int i=0; i<c.length; i++) {
+        for (int i = 0; i < c.length; i++) {
             System.out.print(c[i]);
         }
 
@@ -27,7 +28,7 @@ public class code12Practise {
         f2.close();
         System.out.println("Doing a reset");
         f.reset();
-        for (int i=0; i<3; i++)
+        for (int i = 0; i < 3; i++)
             f.write('X');
         System.out.println(f.toString());
     }

@@ -3,7 +3,8 @@ package com.mph;
 import java.io.CharArrayReader;
 import java.io.IOException;
 
-public class code11Practise {
+//Usage of CharacterArrayReader and its methods
+public class CharacterReader {
     public static void main(String args[]) throws IOException {
         String tmp = "abcdefghijklmnopqrstuvwxyz";
         int length = tmp.length();
@@ -15,14 +16,14 @@ public class code11Practise {
 
         int i;
         System.out.println("input1 is:");
-        while((i = input1.read()) != -1) {
-            System.out.print((char)i);
+        while ((i = input1.read()) != -1) {
+            System.out.print((char) i);
         }
         System.out.println();
 
         System.out.println("input2 is:");
-        while((i = input2.read()) != -1) {
-            System.out.print((char)i);
+        while ((i = input2.read()) != -1) {
+            System.out.print((char) i);
         }
         System.out.println();
     }

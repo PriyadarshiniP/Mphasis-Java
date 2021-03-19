@@ -2,7 +2,8 @@ package com.mph;
 
 import java.io.*;
 
-public class code8 {
+//Usage of DataOutputstream and its methods
+public class DataStreamCode {
     public static void main(String args[]) throws IOException {
 
         FileOutputStream fout = new FileOutputStream("D:/java/Test.dat");
