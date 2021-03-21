@@ -2,7 +2,7 @@ package com.mph;
 
 import java.io.*;
 
-//copying binary contents using data IO streams
+//copying binary contents using DataOutput stream
 public class CopyBinary {
     public static void main(String[] args) throws IOException {
 
