@@ -21,7 +21,7 @@ class Student extends Person {
         super(id, name);
 
         this.rollno = rollno;
-        this.sname = sname;
+        this.sname = course;
     }
 }
 
