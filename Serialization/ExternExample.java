@@ -45,15 +45,16 @@ class Car implements Externalizable {
 public class ExternExample {
     public static void main(String[] args) {
         Car car = new Car("BMW", 1995);
-        Car newcar = null;
-
+        Car newcar = new Car();
+        //System.out.println(car);
         // Serialize the car
         try {
             FileOutputStream fo
                     = new FileOutputStream("car.txt");
             ObjectOutputStream so
                     = new ObjectOutputStream(fo);
-            so.writeObject(car);
+            Car c = new Car();
+            c.writeExternal(so);
             so.flush();
         } catch (Exception e) {
             System.out.println(e);
@@ -65,7 +66,7 @@ public class ExternExample {
                     = new FileInputStream("car.txt");
             ObjectInputStream si
                     = new ObjectInputStream(fi);
-            newcar = (Car) si.readObject();
+            newcar.readExternal(si);
         } catch (Exception e) {
             System.out.println(e);
         }
