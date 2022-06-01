@@ -1,0 +1,12 @@
+emp id,exp,First_Name,Last_Name,Email,Phone,hire_date,Job_Id,Salary,Manager_Id,Dept_Id
+234,8+ years,Arjun,Kumar,arjun.kumar@gmail.com,9789832456,21-Jun-20,100,9000,201,500
+123,< 1 year,Kowshik,Raj,kow.raj@gmail.com,8746537862,16-Sep-20,101,2500,201,500
+345,5 years,Puja ,Shree,puja.shree@gmail.com,9648267457,15-Sep-20,106,7000,204,300
+325,3 years,Raji,Kumari,raji.kumari@gmail.com,9853457256,15-Sep-20,104,5000,201,500
+315,<3 years,Arun,Dev,arun.dev@gmail.com,9673562621,14-Jun-20,102,4000,202,300
+335,4 years,Rajesh,P,rajesh.p@gmail.com,9435672891,17-Jul-20,105,6000,201,200
+300,4+ years,Shruthi,M,shruthi.m@gmail.com,8435678920,3-Mar-20,105,7000,202,300
+301,5 years,Vignesh,Selvan,vignesh.selvan@gmail.com,9356789928,3-Mar-20,106,8000,204,500
+305,<5 years,Raju,Bhai,raju.bhai@gmail.com,8973674829,4-Mar-20,105,7000,201,200
+320,3 years,Kamali,K,kamali.k@gmail.com,9345627839,5-Mar-20,104,3500,202,200
+322,2 years,Pradeep,Kumar,pradeep.kumar@gmail.com,9563782928,5-Mar-20,102,3000,202,300
